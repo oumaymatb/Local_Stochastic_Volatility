@@ -2,6 +2,7 @@
 #define HESTONLOCALVOLATILITY_H
 #include <iostream>
 #include <vector> 
+#include <map>
 #include<algorithm>
 #include "HestonModel.h"
 
