@@ -3,7 +3,6 @@
 
 #include "HestonModel.h"
 #include "Complex.h"
-#include "GaussLegendreQuadrature.h"
 #include <vector>
 
 using Vector = std::vector<double>;
