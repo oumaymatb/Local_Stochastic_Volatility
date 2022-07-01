@@ -1,7 +1,6 @@
 #include <iostream>
 #include <typeinfo>
 #include "DupireLocalVolatilitySurface.h"
-#include "HestonLocalModel.h"
 #include "HestonPricer.h"
 #include "RootSearch.hpp"
 #include "HestonLocalVolatility.h"
