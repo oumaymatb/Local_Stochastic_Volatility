@@ -85,8 +85,8 @@ int main()
 	double vol_level = 0.0855;
 	double correl = -0.315;
     double maturity = 2.;
-    double strike = 90.;
-    double implied_vol = 0.22;
+    double strike = 100.;
+    double implied_vol = 0.26;
 	cout << "BS call for strike " << strike << " is " << BS_call(init_spot, strike, risk_free_rate, implied_vol,maturity);
 
 }
