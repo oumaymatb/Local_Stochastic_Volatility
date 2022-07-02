@@ -5,7 +5,7 @@
 #include "RootSearch.hpp"
 #include "HestonLocalVolatility.h"
 
-using namespace std
+using namespace std;
 
 int main()
 {
@@ -51,12 +51,18 @@ int main()
 	for (auto strike:market_strikes)
 	{
 		MonteCarloHestonPricer HestonModel(Model, strike, 2., 10000, 100);
-		HestonLocalVolatility LocalHestonModel(Model, discretization_size, number_simulation, maturity, market_maturities, market_strikes, market_implied_vols);
+		// HestonLocalVolatility LocalHestonModel(Model, discretization_size, number_simulation, maturity, market_maturities, market_strikes, market_implied_vols);
 		heston_price_call = HestonModel.price();
-		local_heston_price_call = LocalHestonModel.price_call(strike);
+		// local_heston_price_call = LocalHestonModel.price_call(strike);
 		cout << "heston call for strike  " << strike <<" is " << heston_price_call << endl;
-		cout << "Implied heston volatility " << calc_implied_vol(heston_price_call, init_spot, strike*100., risk_free_rate, 2., 0, 1) << endl;
-		cout << "Implied local heston volatility " << calc_implied_vol(heston_price_call, init_spot, strike*100., risk_free_rate, 2., 0, 1) << endl;
+		for (size_t i= 0; i<6; i++)
+		{
+			Vector implied_vols = market_implied_vols[i];
+			cout << "BS call for strike " << strike << " is " << BS_call(init_spot, strike, risk_free_rate, implied_vols[5],maturity);
+		}
+
+		// cout << "Implied heston volatility " << calc_implied_vol(heston_price_call, init_spot, strike*100., risk_free_rate, 2., 0, 1) << endl;
+		// cout << "Implied local heston volatility " << calc_implied_vol(heston_price_call, init_spot, strike*100., risk_free_rate, 2., 0, 1) << endl;
 	}
 
 	return 0;
