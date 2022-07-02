@@ -55,10 +55,10 @@ int main()
 		heston_price_call = HestonModel.price();
 		// local_heston_price_call = LocalHestonModel.price_call(strike);
 		cout << "heston call for strike  " << strike <<" is " << heston_price_call << endl;
-		for (size_t i= 0; i<6; i++)
+		Vector implied_vols = market_implied_vols[4];
+		for (auto vol:implied_vols)
 		{
-			Vector implied_vols = market_implied_vols[i];
-			cout << "BS call for strike " << strike << " is " << BS_call(init_spot, strike, risk_free_rate, implied_vols[5],maturity);
+			cout << "BS call for strike " << strike << " is " << BS_call(init_spot, strike, risk_free_rate, vol,maturity);
 		}
 
 		// cout << "Implied heston volatility " << calc_implied_vol(heston_price_call, init_spot, strike*100., risk_free_rate, 2., 0, 1) << endl;
